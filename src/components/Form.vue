@@ -1,7 +1,7 @@
 <template>
   <section>
-    <div v-if="errors" style="color: red; text-align: center;">
-      {{errors}}
+    <div v-if="error" style="color: red; text-align: center;">
+      {{error}}
     </div>
     <div class="form">
       <h1>{{ msg }}</h1>
@@ -18,15 +18,15 @@ export default {
   props: {
     msg: String
   },
-  data: function() {
-    return {
-      errors: ''
-    }
-  },
   methods: {
     click: function(event) {
       const country = document.getElementById('country').value
       this.$store.dispatch('storeCountries', country)
+    }
+  },
+  computed: {
+    error: function() {
+      return this.$store.getters.error;
     }
   }
 }

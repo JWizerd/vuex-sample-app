@@ -14,7 +14,7 @@ export default new Vuex.Store({
       state.countries.push(country)
     },
     setError(state, error) {
-      state.error = error.message
+      state.error = error
     },
     deleteCountry(state, country) {
       const filtered = state.countries.filter((item,index) => index !== country)
@@ -22,7 +22,8 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    countries: state => state.countries
+    countries: state => state.countries,
+    error: state => state.error
   },
   actions: {
     storeCountries: function({commit, state}, country) {
